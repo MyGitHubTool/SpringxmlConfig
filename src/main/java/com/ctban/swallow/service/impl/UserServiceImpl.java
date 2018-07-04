@@ -11,13 +11,18 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
+
+    private final UserDao userDao;
+
     @Autowired
-    UserDao userDao;
+    private UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public UserDTO findUserInfoId(Long id) {
 
-       return userDao.findUserInfoId(id);
+        return userDao.findUserInfoId(id);
 
     }
 }
